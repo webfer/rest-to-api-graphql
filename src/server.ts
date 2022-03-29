@@ -1,4 +1,3 @@
-import { SeasonsData } from './data/data-seasons';
 // Añadir los imports
 import express from 'express';
 import compression from 'compression';
