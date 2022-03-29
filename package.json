@@ -14,7 +14,7 @@
     "url": "git+https://github.com/webfer/rest-to-api-graphql.git"
   },
   "keywords": [
-    "webfer",
+    "ergast",
     "api-rest-to-graphql",
     "graphql",
     "rest-data-source"
