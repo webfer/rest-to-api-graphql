@@ -1,11 +1,11 @@
 import { IResolvers } from 'graphql-tools';
-import mutation from './mutation';
+import type from './type';
 import query from './query';
 
-export const LIST: string [] = [ ];
-const resolvers : IResolvers = {
-    ...query,
-    ...mutation
+export const LIST: string[] = [];
+const resolvers: IResolvers = {
+  ...query,
+  ...type,
 };
 
 export default resolvers;
