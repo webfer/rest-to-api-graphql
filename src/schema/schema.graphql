@@ -32,6 +32,8 @@ type Query {
   seasonPilotsRanking(year: String!): [DriverStandings!]!
   "History pilots"
   historyCircuits(pageElements: Int, page: Int): [Circuit!]!
+  "Circuit selected by id"
+  circuitSelect(id: String!): Circuit
 }
 
 "Mutation function"

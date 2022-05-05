@@ -51,6 +51,11 @@ const query: IResolvers = {
         .getCircuits(pageElements, page)
         .then((data: any) => data.MRData.CircuitTable.Circuits);
     },
+    async circuitSelect(_: void, { id }, { dataSources }) {
+      return await dataSources.circuits
+        .getCircuit(id)
+        .then((data: any) => data.MRData.CircuitTable.Circuits[0]);
+    },
   },
 };
 
