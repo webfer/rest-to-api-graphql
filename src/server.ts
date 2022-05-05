@@ -1,4 +1,3 @@
-import { SeasonsData } from './data/data-seasons';
 // Añadir los imports
 import express from 'express';
 import compression from 'compression';
@@ -24,6 +23,9 @@ async function init() {
     introspection: true, // Necesario
     dataSources: () => ({
       seasons: new dataSources.SeasonsData(),
+      races: new dataSources.RacesData(),
+      drivers: new dataSources.DriversData(),
+      circuits: new dataSources.CircuitsData(),
     }),
   });
 

@@ -1,10 +1,115 @@
 type Query {
-    hello: String!
-    helloWithName(name: String!): String!
-    helloToGraphQLCourse: String!
-    list: [String]
+  list: [String]
+  "Season list of Formula 1. From 1950 to present, selected"
+  seasonList: [Season!]!
+  """
+  Get information of the races selected by year.
+  Keep in mind that there are only seasons from 1950 to present.
+  """
+  racesByYear(year: String!): [Race!]!
+  "Race selected by year and race number"
+  raceSelect(year: String!, round: Int!): Race
+  """
+  F1 list pilots of all history.
+  We have two options:
+  Firts, we have get all pilots.
+  Second, we can use pagination and we can limit number of results.
+  """
+  historyDrivers(pageElements: Int, page: Int): [Driver!]!
+  """
+  Get information of the pilots selected by year.
+  Keep in mind that there are only seasons from 1950 to present.
+  """
+  driversYear(year: String!): [Driver!]!
+  """
+  Get information of the pilots selected by year and round number.
+  Keep in mind that there are only seasons from 1950 to present.
+  """
+  driversYearAndRound(year: String!, round: Int!): [Driver!]!
+  "Get Driver information selected by 'id' value."
+  driverSelect(id: String!): Driver
+  "Final ranking of pilots for a season"
+  seasonPilotsRanking(year: String!): [DriverStandings!]!
+  "History pilots"
+  historyCircuits(pageElements: Int, page: Int): [Circuit!]!
+  "Circuit selected by id"
+  circuitSelect(id: String!): Circuit
 }
 
+"Mutation function"
 type Mutation {
-    add(value: String!): [String]
+  add(value: String!): [String]
+}
+
+"Season information"
+type Season {
+  "Season year"
+  year: String!
+  "Wikipedia information, Url season"
+  url: String!
+  "Wikipedia information, Url mobile season"
+  urlMobile: String!
+}
+
+"Race information"
+type Race {
+  season: String!
+  round: String!
+  "Wikipedia information, Url season"
+  url: String!
+  "Wikipedia information, Url mobile season"
+  urlMobile: String!
+  name: String!
+  circuit: Circuit!
+  date: String!
+  time: String
+}
+
+"Circuit information"
+type Circuit {
+  id: String!
+  "Wikipedia information, Url season"
+  url: String!
+  "Wikipedia information, Url mobile season"
+  urlMobile: String!
+  name: String!
+  location: Location!
+}
+
+"Location information"
+type Location {
+  lat: String!
+  lng: String!
+  locality: String!
+  country: String!
+}
+
+type Driver {
+  id: String!
+  "Wikipedia information, Url season"
+  url: String!
+  "Wikipedia information, Url mobile season"
+  urlMobile: String!
+  name: String!
+  dateOfBirth: String!
+  nationality: String!
+  code: String
+  permanentNumber: String
+}
+
+type DriverStandings {
+  position: String!
+  positionText: String!
+  points: String!
+  wins: String!
+  constructors: [Constructors!]!
+  driver: Driver!
+}
+
+type Constructors {
+  id: String!
+  url: String!
+  urlMobile: String!
+  name: String!
+  nationality: String!
 }
